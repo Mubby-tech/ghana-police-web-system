@@ -67,6 +67,7 @@ import UserManagement from './pages/settings/UserManagement';
 import ActivityLogs from './pages/settings/ActivityLogs';
 import ProfileSettings from './pages/settings/ProfileSettings';
 
+
 function App() {
   return (
     <Router>
