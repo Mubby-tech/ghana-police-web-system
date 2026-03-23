@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 
-function Dashboard() {
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+function Dashboard () {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [stats, setStats] = useState(null);
@@ -35,7 +37,7 @@ function Dashboard() {
       const token = localStorage.getItem('token');
       
       // Fetch statistics
-      const statsResponse = await fetch('http://localhost:5000/api/dashboard/stats', {
+      const statsResponse = await fetch(`${API_URL}/api/dashboard/stats`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -49,7 +51,7 @@ function Dashboard() {
       }
 
       // Fetch recent activity
-      const activityResponse = await fetch('http://localhost:5000/api/dashboard/activity?limit=5', {
+      const activityResponse = await fetch(`${API_URL}/api/dashboard/activity?limit=5`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,

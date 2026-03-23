@@ -16,11 +16,18 @@ const app = express();
 // ============================================
 
 // CORS Configuration (Vision Doc Section 5.4 - Enhanced Data Security)
+// app.use(cors({
+//   origin: process.env.CLIENT_URL || 'http://localhost:5173',
+//   credentials: true,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// }));
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: [
+    "http://localhost:5173",
+    "https://ghana-police-web-system-e4sjbh7sm-mubaraks-projects-79b71129.vercel.app"
+  ],
+  credentials: true
 }));
 
 // Body Parser Middleware
